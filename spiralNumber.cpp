@@ -3,12 +3,7 @@
 // #include <conio.h>
 using namespace std;
 
-<<<<<<< HEAD
-void squareDecreaseNumber(){
-=======
 void spiralNumber(){
->>>>>>> 22face8a4f45063f56c6bf25b2471a35ab8a1a01
-
     int row, column;
     cout << "Enter number of rows and columns (row*column): " ; cin >> row >> column;
 
@@ -52,11 +47,7 @@ void spiralNumber(){
 int main (){
 
     cout << "hello" << endl; 
-<<<<<<< HEAD
-    squareDecreaseNumber();
-=======
     spiralNumber();
->>>>>>> 22face8a4f45063f56c6bf25b2471a35ab8a1a01
   
     //system ("pause");       // Print: Press any key to continue... 
     //getch(); -> conio.h | Make the program waits for any key to be pressed
