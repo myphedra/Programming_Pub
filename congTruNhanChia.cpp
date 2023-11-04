@@ -41,7 +41,7 @@ int congTruNhanChia(int order, int a, int b){
                 result = a / b; break;
             } else {
                 cout << "Error: Division by zero" << endl;
-                exit(1);
+                exit(1); //  exit(1) statement is used to terminate a program abnormally with an error code
             }
         }
     }
@@ -67,6 +67,35 @@ void printPhepTinh(int CalculationOne, int CalculationTwo, int CalculationThree,
     cout << f << endl;
 }
 
+
+// This function is wrong because we don't RESET value for RESULT variable after a loop !
+// void printCorrectCalculation(int a, int b, int c, int d, int e, int f){
+//     int result = 0;
+    
+//     for (int CalculationOne = 1; CalculationOne <= 4; CalculationOne++){
+
+//         result = result + congTruNhanChia(CalculationOne, a, b);
+
+//         for (int CalculationTwo = 1; CalculationTwo <= 4; CalculationTwo++){
+
+//             result = result + congTruNhanChia(CalculationTwo, result, c);
+
+//             for (int CalculationThree = 1; CalculationThree <= 4; CalculationThree++){
+
+//                 result = result + congTruNhanChia(CalculationThree, result, d);
+
+//                 for (int CalculationFour = 1; CalculationFour <= 4; CalculationFour++){
+                    
+//                     result = result + congTruNhanChia(CalculationFour, result, e);
+
+//                     if(f == result) printPhepTinh(CalculationOne, CalculationTwo, CalculationThree, CalculationFour, a, b, c, d, e, f);
+//                 }
+//             }
+//         }
+//     }
+// }
+
+// Good!
 void printCorrectCalculation(int a, int b, int c, int d, int e, int f){
     int result = 0;
     
@@ -74,7 +103,7 @@ void printCorrectCalculation(int a, int b, int c, int d, int e, int f){
         for (int CalculationTwo = 1; CalculationTwo <= 4; CalculationTwo++){
             for (int CalculationThree = 1; CalculationThree <= 4; CalculationThree++){
                 for (int CalculationFour = 1; CalculationFour <= 4; CalculationFour++){
-                    result = a;
+                    result = a; // Both RESET value for RESULT and assign <a>to RESULT
                     result = congTruNhanChia(CalculationOne, result, b);
                     result = congTruNhanChia(CalculationTwo, result, c);
                     result = congTruNhanChia(CalculationThree, result, d);
@@ -94,3 +123,7 @@ int main (){
     printCorrectCalculation(a, b, c, d, e, f);
     return 0;
 }
+
+
+
+
