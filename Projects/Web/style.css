@@ -1,0 +1,327 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+:root {
+    --light: #f9f9f9;
+    --blue: #3c91e6;
+    --light-blue: #cfe8ff;
+    --grey: #eee;
+    --dark-grey: #aaaaaa;
+    --dark: #342e37;
+    --red: #db504a;
+}
+a {
+    text-decoration: none;
+}
+li {
+    list-style-type: none;
+}
+body {
+    background: var(--grey);
+}
+
+/* SIDEBAR */
+#sidebar {
+    width: 250px;
+    height: 100vh;
+    background: var(--light);
+    
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 999;       /* Display on all elements */
+
+    transition: 0.3 ease;
+    overflow-x: hidden;
+}
+/* THU NHO SIDEBAR */
+#sidebar.hide {
+    width: 70px;
+}
+
+/* #sidebar .brand {
+    font-size: 25px;
+    font-weight: 700;
+    height: 55px;
+    display: flex;
+    align-items: center;
+} */
+
+#sidebar .brand img{
+    width: 250px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+}
+
+#sidebar .side-menu {
+    width: 100%;
+    margin-top: 48px;
+}
+#sidebar .side-menu li {
+    height: 48px;
+    background-color: transparent;
+    padding: 4px;
+    margin-left: 8px;
+    border-radius: 48px 0 0 48px;
+}
+#sidebar .side-menu li.item--active {
+    background: var(--grey);
+    position: relative;
+}
+#sidebar .side-menu li.item--active a{
+    color: var(--blue);
+    background: var(--light-blue);
+}
+
+/* Set phần bo góc trên cho item-active */
+#sidebar .side-menu li.item--active::before {
+    content: "";    /*Required*/
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    top: -40px;
+    right: 0;
+    box-shadow: 20px 20px 0 var(--grey);
+    /* background: var(--blue); */
+    z-index: -1;
+}
+/* Set phần bo góc dưới cho item-active */
+#sidebar .side-menu li.item--active::after {
+    content: "";
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    position: absolute;
+    bottom: -40px;
+    right: 0;
+    box-shadow: 20px -20px 0 var(--grey);
+    /* background: var(--blue); */
+    z-index: -1;
+}
+
+#sidebar .side-menu li a {
+    width: 100%;
+    height: 100%;
+    background: var(--light);
+    /* padding-left: 8px; */
+    border-radius: 48px;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    font-size: 18px;
+    color: var(--dark);
+
+    white-space: nowrap;
+    overflow-x: hidden;
+}
+#sidebar .side-menu li a:hover {
+    color: var(--blue);
+    /* cursor: pointer; */
+}
+#sidebar .side-menu li a .side-menu__icon {
+    /* Calc: for padding (4px) and margin-left  */
+    min-width: calc(60px - ((4px + 6px + 8px) * 2));   
+    margin-left: 15px;
+    margin-right: 15px;
+    display: flex;
+    justify-content: center;
+}
+/* END SIDEBAR */
+
+/* CONTENT */
+#content {
+    height: 100vh;
+    position: relative;
+    width: calc(100% - 250px);
+    left: 250px;
+    transition: 0.3s ease;
+}
+/* Khi #sidebar có thuộc tính hide thì áp dụng cho content (width, left,..)  */
+#sidebar.hide ~ #content {
+    width: calc(100% - 70px);
+    left: 70px;
+}
+
+/* NAVBAR */
+#content nav {
+    height: 56px;
+    background: var(--light);
+    font-size: 25px;
+    padding: 0 24px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    grid-gap: 24px;
+}
+#content nav #hidden-sidebar-btn:hover {
+    cursor: pointer;
+    /* background: var(--blue); */
+}
+#content nav #site-name {
+    /* position: absolute; */
+    /* width: 60%; */
+    min-width: fit-content;
+    height: 80%;
+    /* margin-left: 24px; */
+    color: var(--grey);
+    border-radius: 10px;
+    background: var(--blue);
+
+    display: flex;
+    flex-grow: 1;
+    justify-content: center;
+    align-items: center;    
+}
+#content nav #logout {  
+    width: 10%;
+    min-width: fit-content;
+    height: 80%;
+    /* padding: 0 24px; */
+    border-radius: 10px;
+    background: var(--red);
+    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}   
+#content nav #logout:hover {
+    cursor: pointer;
+}
+#content nav #logout img {
+    height: 24px;
+}
+/* END NAVBAR */
+
+
+/* MAIN */
+#content main {
+    width: 100%;
+    /* 56px: navbar */
+    height: calc(100vh - 56px);
+    display: flex;
+    flex-direction: column;
+}
+#content main .box-product,
+#content main .box-order{
+    height: 30%;
+    /* height: auto; */
+    margin: 24px;
+    display: grid;
+    /* grid-template-columns: repeat(auto-fit, min-max(200px, 1fr)); */
+    grid-template-columns: 2fr repeat(4, 1fr);
+    grid-gap: 12px;
+}   
+
+#content main .products-orders li{
+    padding: 24px;
+    background: var(--light);
+    border-radius: 20px;
+    display: flex;
+    align-items: center;
+    grid-gap: 24px; 
+}
+#content main .products-orders li .text {
+    white-space: nowrap;
+}
+#content main .products-orders li .text h2 {
+    text-align: center;
+    color: var(--blue)
+}
+#content main .products-orders li .icon ,
+#content main .customers li .icon{
+    padding: 12px;
+    width: 60px;
+    height: 60px;
+    border-radius: 10px;
+    background: var(--grey);
+    align-items: center;
+}
+#content main .products-orders .box-product .general {
+    background: var(--light-blue);
+}
+#content main .products-orders .box-order .general {
+    background-color:antiquewhite;
+}
+
+
+/* CUSTOMER */
+#content main .customers {
+    display: flex;
+    /* Customer chiếm toàn bộ height còn lại của main */
+    flex-grow: 1;
+    margin-bottom: 24px;
+}
+
+#content main .customers .customer__chart--name{
+    position: absolute;
+    padding: 0 24px;
+    border-radius: 12px;
+
+    display: flex;
+    /* Căn giữa chữ so với icon */
+    align-items: center;    
+    grid-gap: 12px; 
+}
+#content main .customers .customer__note  {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 24px;
+}
+#content main .customers .customer__note li {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin: 12px;
+}
+#content main .customers li .note_icon--click{
+    background: var(--light-blue);
+}
+#content main .customers li .note_icon--purchase{
+    background: var(--blue);
+}
+/* CHART */
+#content main .customer__chart {
+    width: 70%;
+    /* Trừ đi chiều cao của các phần khác */
+    /* height: calc(100vh - 56px - 30% - 48px);  */
+    /* height: 45vh; */
+    /* height:  */
+    margin: 0px 24px;
+    background: var(--light);
+    border-radius: 12px;
+    
+    display: flex;
+    align-items: flex-end;
+    flex-grow: 1;
+}
+#content main .customer__chart .item {
+    width: 72px;
+    /* Không hoạt động với calc()..., chỉ hoạt động khi height rõ ràng */
+    /* height: var(--counter); */
+    /* Chuyển đổi chiều cao thành tỷ lệ phần trăm của view height */
+    height: calc(var(--counter) * 1vh); 
+
+    margin: 2px;
+    text-align: center; 
+    border-radius: 8px;
+}
+#content main .customer__chart .item--click {
+    background: var(--light-blue);
+    margin-left: 12px;
+}
+#content main .customer__chart .item--purchase {
+    background: var(--blue);    
+    margin-right: 12px;
+}
+/* END CHART */
+/* END CUSTOMER */
+
+/* END MAIN */
+/* END CONTENT */
+
