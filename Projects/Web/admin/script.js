@@ -1,14 +1,16 @@
+/* SIDEBAR */ 
 // Thay đổi trạng thái "active | disable" cho các <li>: 
 // click -> active, remove active cho các <li> khác
 const allSideMenu = document.querySelectorAll('#sidebar .side-menu li a');
 allSideMenu.forEach(item => {
+    // Lưu lại <li> muốn show
     const li = item.parentElement;
     item.addEventListener('click', function(){
-        // Tất cả <li> bị xóa khỏi lớp item--active
+        // Tất cả <li> bị xóa class item--active khi 'click'
         allSideMenu.forEach(i => {
             i.parentElement.classList.remove('item--active');
         })
-        // Thêm lớp item--active vào thẻ <li> cha 
+        // Thêm lớp item--active vào thẻ <li> cha, cái được 'click'
         li.classList.add('item--active');
     });
 });
@@ -20,7 +22,39 @@ const sideBar = document.getElementById('sidebar');
 menuBar.addEventListener('click', function() {
     sideBar.classList.toggle('hide');
 });
+/* END SIDEBAR */ 
 
+/** HIỆN TỪNG MAIN-ITEM TƯƠNG ỨNG KHI ẤN VÀO THANH SIDEBAR 
+ *  Ấn Dashboard hiện main__dashboard, ẩn các cái khác,...
+ * */
+// Func: ẩn toàn bộ các main-item
+function hideAllMainItem(){
+    // Duyệt qua toàn bộ main-item và gán style 'none'
+    document.querySelectorAll('.main-item').forEach(item => {
+        item.style.display = 'none';
+    });
+}
+
+// Func: hiển thị cụ thể main-item được 'click' tương ứng tại sidebar
+function showClickMainItem(itemId){
+    hideAllMainItem();  // Ẩn toàn bộ các main-item
+    document.getElementById(itemId).style.display = 'block';  // Hiển thị main-item theo id
+}
+
+// Đặt event 'click' cho phần main-item tương ứng tại sidebar
+document.getElementById('sidebar__dashboard').onclick = () => showClickMainItem('main__dashboard');
+document.getElementById('sidebar__products').onclick = () => showClickMainItem('main__products');
+document.getElementById('sidebar__customers').onclick = () => showClickMainItem('main__customers');
+document.getElementById('sidebar__orders').onclick = () => showClickMainItem('main__orders');
+document.getElementById('sidebar__statistics').onclick = () => showClickMainItem('main__statistics');
+
+// Hiển thị main__dashboard mặc định khi tải trang
+showClickMainItem('main__dashboard');
+
+
+
+
+/* MAIN__PRODUCTS */
 // Hiển thị modal và tải thông tin sản phẩm vào modal để chỉnh sửa
 function showChangeProductBox(productId) {
     // Hiển thị modal
@@ -185,3 +219,4 @@ function filterProducts() {
         }
     });
 }
+/* END MAIN__PRODUCTS */

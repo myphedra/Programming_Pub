@@ -299,7 +299,7 @@ body {
     display: flex;
     align-items: flex-end;
     flex-grow: 1;
-}
+} 
 #content main .customer__chart .item {
     width: 72px;
     /* Không hoạt động với calc()..., chỉ hoạt động khi height rõ ràng */
@@ -324,4 +324,3 @@ body {
 
 /* END MAIN */
 /* END CONTENT */
-
