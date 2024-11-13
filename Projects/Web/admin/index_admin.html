@@ -205,67 +205,12 @@
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <!-- Thêm các dòng sản phẩm khác ở đây -->
-                                    <tr data-id="10042">
-                                        <td>10042</td>
-                                        <td><img src="path/to/image.jpg" alt="Sản phẩm"></td>
-                                        <td>IPHONE 16 PRO MAX</td>
-                                        <td>APPLE</td>
-                                        <td>39.999.000 VND</td>
-                                        <td>
-                                            <button class="delete-btn">Xóa</button>
-                                            <button class="edit-btn" onclick="showChangeProductBox('10042')">Sửa</button>
-                                        </td>
-                                    </tr>
-                                    <tr data-id="10043">
-                                        <td>10043</td>
-                                        <td><img src="path/to/image.jpg" alt="Sản phẩm"></td>
-                                        <td>IPHONE 15 PRO MAX</td>
-                                        <td>APPLE</td>
-                                        <td>39.999.000 VND</td>
-                                        <td>
-                                            <button class="delete-btn">Xóa</button>
-                                            <button class="edit-btn" onclick="showChangeProductBox('10043')">Sửa</button>
-                                        </td>
-                                    </tr>
-                                    <tr data-id="10044">
-                                        <td>10044</td>
-                                        <td><img src="path/to/image.jpg" alt="Sản phẩm"></td>
-                                        <td>Xiaomi Redmi Note</td>
-                                        <td>XIAOMI</td>
-                                        <td>39.999.000 VND</td>
-                                        <td>
-                                            <button class="delete-btn">Xóa</button>
-                                            <button class="edit-btn" onclick="showChangeProductBox('10044')">Sửa</button>
-                                        </td>
-                                    </tr>
-                                    <tr data-id="10045">
-                                        <td>10044</td>
-                                        <td><img src="path/to/image.jpg" alt="Sản phẩm"></td>
-                                        <td>Samsung Galaxy Ultra</td>
-                                        <td>SAMSUNG</td>
-                                        <td>39.999.000 VND</td>
-                                        <td>
-                                            <button class="delete-btn">Xóa</button>
-                                            <button class="edit-btn" onclick="showChangeProductBox('10044')">Sửa</button>
-                                        </td>
-                                    </tr>
-                                    <tr data-id="10046">
-                                        <td>10044</td>
-                                        <td><img src="path/to/image.jpg" alt="Sản phẩm"></td>
-                                        <td>Bphone Jack 5 củ</td>
-                                        <td>BPHONE</td>
-                                        <td>39.999.000 VND</td>
-                                        <td>
-                                            <button class="delete-btn">Xóa</button>
-                                            <button class="edit-btn" onclick="showChangeProductBox('10044')">Sửa</button>
-                                        </td>
-                                    </tr>
-                                    <!-- Lặp lại các dòng sản phẩm nếu cần -->
+                                <tbody id="product-table-body">
+                                    <!-- Sản phẩm sẽ được thêm vào đây -->
                                 </tbody>
                             </table>
                         </div>
+                        <div class="pagination" id="pagination"></div>
                     </div>
                     <div class="user-mode">
                         <div class="search">
@@ -276,10 +221,11 @@
                                 <label for="brand" class="">Thương hiệu</label>
                                 <select id="brand">
                                     <option value="all">TẤT CẢ</option>
-                                    <option value="apple">APPLE</option>
-                                    <option value="samsung">SAMSUNG</option>
-                                    <option value="xiaomi">XIAOMI</option>
-                                    <option value="bphone">BPHONE</option>
+                                    <option value="APPLE">APPLE</option>
+                                    <option value="SAMSUNG">SAMSUNG</option>
+                                    <option value="XIAOMI">XIAOMI</option>
+                                    <option value="BPHONE">BPHONE</option>
+                                    <option value="VIVO">VIVO</option>
                                 </select>
                             </form>
                         </div>
@@ -290,10 +236,11 @@
                                 <input type="text" id="new-product-name" placeholder="Nhập tên sản phẩm...">
                                 <label for="new-brand">Thương hiệu</label>
                                 <select id="new-brand">
-                                    <option value="apple">APPLE</option>
-                                    <option value="samsung">SAMSUNG</option>
-                                    <option value="xiaomi">XIAOMI</option>
-                                    <option value="bphone">BPHONE</option>
+                                    <option value="APPLE">APPLE</option>
+                                    <option value="SAMSUNG">SAMSUNG</option>
+                                    <option value="XIAOMI">XIAOMI</option>
+                                    <option value="Bphone">BPHONE</option>
+                                    <option value="VIVO">VIVO</option>
                                 </select>
                                 <label for="price">Giá</label>
                                 <input type="text" id="price" placeholder="Nhập giá sản phẩm...">
@@ -316,13 +263,13 @@
                             <img id="imgafter" src="path/to/image.jpg" alt="Ảnh sau">
                         </div>
                         <div class="info">
-                            <label for="name">Tên sản phẩm</label>
-                            <input type="text" id="name" value=""><br>
-                            <label for="price">Giá</label>
-                            <input type="text" id="price" value=""><br>
-                            <input type="file" id="fileimg" onchange="changeImagePreview(this)">
+                            <label for="edit-name">Tên sản phẩm</label>
+                            <input type="text" id="edit-name" value=""><br>
+                            <label for="edit-price">Giá</label>
+                            <input type="text" id="edit-price" value=""><br>
+                            <input type="file" id="edit-image-upload" onchange="changeImagePreview(this)">
                         </div>
-                        <button id="save" onclick="saveProductChanges(10041)">Lưu chỉnh sửa</button>
+                        <button id="save">Lưu chỉnh sửa</button>
                     </div>
                 </div>
             </div>
