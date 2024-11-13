@@ -335,7 +335,76 @@
             
             <!-- ORDERS PAGE -->
             <div class="main-item" id="main__orders">
-                <h1>ORDERS</h1>
+                <!-- <h1>ORDERS</h1> -->
+                <div class="container">
+                    <!-- PRODUCTS TABLE -->
+                    <div class="main-content">
+                        <div class="product-list">
+                            <table class="product-table">
+                                <thead class="product-header">
+                                    <tr>
+                                        <th>#ID</th>
+                                        <th>Tên KH</th>
+                                        <th>Thời điểm đặt hàng</th>
+                                        <th>Địa chỉ</th>
+                                        <th>Chi tiết</th>
+                                        <th>Tình trạng</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Thêm các dòng sản phẩm khác ở đây -->
+                                    <tr data-id="10042">
+                                        <td>10042</td>
+                                        <td>Tên khách hàng</td>
+                                        <td>11/11/2024</td>
+                                        <td>273 An Dương Vương, Phường 2, Quận 5</td>
+                                        <td>
+                                            <button class="detail-btn" onclick=""></button>
+                                        </td>
+                                        <td>
+                                            <select name="order__status" id="order__status">
+                                                <option value="unprocessed">Chưa xử lý</option>
+                                                <option value="confirmed">Đã xác nhận</option>
+                                                <option value="succeeded">Thành công</option>
+                                                <option value="failed">Thất bại</option>
+                                            </select>
+                                        </td>
+                                    </tr>
+                                    <!-- Lặp lại các dòng sản phẩm nếu cần -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="user-mode">
+                        <h2>BỘ LỌC</h2>
+                        <div class="filter">
+                            <br>
+                            <h3>Thời gian</h3>
+                            <label for="time-start">Từ ngày</label>
+                            <input type="date" id="time-start">
+                            <br>
+                            <label for="time-end">Đến ngày</label>
+                            <input type="date" id="time-end">
+                        </div>
+                        <div class="status">
+                            <h3>Tình trạng</h3>
+                            <select name="" id="">
+                                <!-- Mặc định là chọn All -->
+                                <option value="all" selected="selected">All</option>
+                                <option value="unprocessed">Chưa xử lý</option>
+                                <option value="confirmed">Đã xác nhận</option>
+                                <option value="succeeded">Thành công</option>
+                                <option value="failed">Thất bại</option>
+                            </select>
+                        </div>
+                        <div class="sort-by-district">
+                            <button type="button">Sắp xếp theo quận</button>
+                        </div>
+                        <div class="reset">
+                            <button type="button">Reset</button>
+                        </div>
+                    </div>
+                </div>
 
             </div>
 

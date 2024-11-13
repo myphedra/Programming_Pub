@@ -455,7 +455,7 @@ button.done {
     cursor: pointer;
 }
 
-.add-btn {
+.add-btn{
     background-color: var(--blue);
     color: #fff;
     padding: 5px 10px;
