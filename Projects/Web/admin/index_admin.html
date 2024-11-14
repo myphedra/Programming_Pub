@@ -290,8 +290,8 @@
                             <table class="product-table">
                                 <thead class="product-header">
                                     <tr>
-                                        <th>#ID</th>
-                                        <th>Tên KH</th>
+                                        <!-- <th>#ID</th> -->
+                                        <th>Khách hàng</th>
                                         <th>Thời điểm đặt hàng</th>
                                         <th>Địa chỉ</th>
                                         <th>Chi tiết</th>
@@ -301,12 +301,11 @@
                                 <tbody>
                                     <!-- Thêm các dòng sản phẩm khác ở đây -->
                                     <tr data-id="10042">
-                                        <td>10042</td>
                                         <td>Tên khách hàng</td>
                                         <td>11/11/2024</td>
                                         <td>273 An Dương Vương, Phường 2, Quận 5</td>
                                         <td>
-                                            <button class="detail-btn" onclick=""></button>
+                                            <button class="detail-btn" onclick="">Chi tiết</button>
                                         </td>
                                         <td>
                                             <select name="order__status" id="order__status">
@@ -357,8 +356,116 @@
 
             <!-- STATISTICS PAGE -->
             <div class="main-item" id="main__statistics">
-                <h1>STATISTICS</h1>
+                <!-- Thống kê theo khoảng thời gian (ngày -> ngày) -->
+                <div class="period">
+                    <div class="from-time">
+                        <span>Từ ngày:</span>
+                        <input type="date" name="" id="">
+                    </div>
+                    <div class="to-time">
+                        <span>Đến ngày:</span>
+                        <input type="date" name="" id="">
+                    </div>
+                </div>
 
+                <!-- Theo sản phẩm -->
+                <div class="container">
+                    <!-- PRODUCTS TABLE -->
+                    <div class="main-content">
+                        <div class="product-list">
+                            <table class="product-table">
+                                <thead class="product-header">
+                                    <th>DOANH THU THEO SẢN PHẨM</th>
+                                    <tr>
+                                        <!-- <th>#ID</th> -->
+                                        <th>#ID</th>
+                                        <th>Tên sản phẩm</th>
+                                        <th>Doanh số</th>
+                                        <th>Doanh thu</th>
+                                        <th>Hóa đơn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Thêm các dòng sản phẩm khác ở đây -->
+                                    <tr data-id="10042">
+                                        <td>01</td>
+                                        <td>Samsung</td>
+                                        <td>1234</td>
+                                        <td>123.456.789 VND</td>
+                                        <td>
+                                            <button type="button">Hóa đơn</button>
+                                        </td>
+                                    </tr>
+                                    <!-- Lặp lại các dòng sản phẩm nếu cần -->
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="user-mode">
+                        <!-- Tổng doanh thu của các sản phẩm -->
+                        <div class="total-revenue">
+                            <h2>Tổng doanh thu</h2>
+                            <div>123.456.789.000 VND</div>
+                        </div>
+
+                        <!-- Chỉ ra sản phẩm chạy nhất và ế nhất (theo số lượng bán ra (doanh số)) -->
+                        <div class="special-product">
+                            <h2>Sản phẩm chạy nhất</h2>
+                            <p>Tên: <span>Samsung S24</span> </p>
+                            <p>Doanh số: <span>123456</span> </p>
+
+                            <h2>Sản phẩm ế nhất</h2>
+                            <p>Tên: <span>Bphone 10</span> </p>
+                            <p>Doanh số: <span>10</span> </p>
+                        </div>
+                        
+                    </div>
+                </div>
+
+                <!-- Theo khách hàng -->
+                <div class="container">
+                    <!-- PRODUCTS TABLE -->
+                    <div class="main-content">
+                        <div class="product-list">
+                            <table class="product-table">
+                                <thead class="product-header">
+                                    <th>DOANH THU KHÁCH HÀNG</th>
+                                    <tr>
+                                        <th>Tên khách hàng</th>
+                                        <th>Doanh thu</th>
+                                        <th>Hóa đơn</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <!-- Thêm các dòng sản phẩm khác ở đây -->
+                                    <tr data-id="10042">
+                                        <td>doduyquy</td>
+                                        <td>123.456.789 VND</td>
+                                        <td>
+                                            <button type="button">Hóa đơn</button>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    <div class="user-mode">
+                        <!-- Tổng doanh thu của khách hàng -->
+                        <div class="total-revenue">
+                            <h2>Tổng doanh thu</h2>
+                            <div>123.456.789.000 VND</div>
+                        </div>
+                        
+                        <!-- Liệt kê top [n] khách hàng có mang lại doanh thu cao nhất -->
+                        <div class="top-customers">
+                            <h2>Top khách hàng</h2>
+                            <p>Top: 
+                                <input type="number" name="" id=""> 
+                            </p>
+                        </div>
+                        
+                    </div>
+                </div>
             </div>
 
 
