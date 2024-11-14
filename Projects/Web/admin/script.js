@@ -102,8 +102,7 @@ function filterProducts() {
     // Tạo lại nút phân trang
     createPagination(totalPages);
 }
-
-// Hiển thị sản phẩm theo trang
+// Sau khi tạo bảng sản phẩm
 function displayPage(page) {
     const tableBody = document.getElementById('product-table-body');
     if (!tableBody) return;
@@ -126,13 +125,17 @@ function displayPage(page) {
 
         row.innerHTML = `
             <td>${id}</td>
-            <td><img src="${imagePath}" alt="Sản phẩm"></td>
+            <td>
+                <div class="product-image-container">
+                <img src="${imagePath}" alt="Sản phẩm">
+            </div>
+            </td>
             <td>${name}</td>
             <td>${brand}</td>
             <td>${price}</td>
             <td>
                 <button class="delete-btn">Xóa</button>
-                <button class="change" onclick="showChangeProductBox(${id - 1})">Sửa</button>
+                <button class="change edit-btn" data-index="${id - 1}">Sửa</button>
             </td>
         `;
 
@@ -141,8 +144,15 @@ function displayPage(page) {
 
     tableBody.appendChild(fragment);
     updatePagination();
-}
 
+    // Thêm event listeners cho các nút sửa
+    document.querySelectorAll('.edit-btn').forEach(button => {
+        button.addEventListener('click', function() {
+            const productIndex = parseInt(this.getAttribute('data-index'));
+            showChangeProductBox(productIndex);
+        });
+    });
+}
 // Tạo nút phân trang
 function createPagination(totalPages) {
     const pagination = document.getElementById('pagination');
@@ -284,7 +294,10 @@ document.getElementById('product-table-body').addEventListener('click', function
 // Hiển thị modal chỉnh sửa sản phẩm
 function showChangeProductBox(productIndex) {
     // Hiển thị modal
-    document.getElementById('modal1').style.display = 'flex';
+    const modal = document.getElementById('modal1');
+    if (modal) {
+        modal.style.display = 'flex';
+    }
 
     // Lấy thông tin sản phẩm
     const product = allProducts[productIndex];
@@ -293,7 +306,7 @@ function showChangeProductBox(productIndex) {
     document.getElementById('edit-name').value = product.name;
     document.getElementById('edit-price').value = product.oldPrice;
     document.getElementById('imgbefore').src = product.img;
-    document.getElementById('imgafter').src = product.img;
+    document.getElementById('imgafter').src = 'img-prd/img-add.jpg';
 
     // Cập nhật sự kiện lưu
     const saveButton = document.getElementById('save');
@@ -330,7 +343,10 @@ function saveProductChanges(productIndex) {
 
 // Đóng modal
 function closeChangeBox() {
-    document.getElementById('modal1').style.display = 'none';
+    const modal = document.getElementById('modal1');
+    if (modal) {
+        modal.style.display = 'none';
+    }
 }
 
 // Cập nhật hình ảnh xem trước khi chọn ảnh mới
@@ -344,3 +360,18 @@ function changeImagePreview(input) {
         reader.readAsDataURL(file);
     }
 }
+// Hiển thị ảnh ở phần thêm Sản phẩm
+function previewImage(event) {
+    const input = event.target;
+    const reader = new FileReader();
+    reader.onload = function() {
+        const img = document.getElementById('img-preview');
+        img.src = reader.result;
+        img.style.display = 'block';
+    };
+    reader.readAsDataURL(input.files[0]);
+}
+window.showChangeProductBox = showChangeProductBox;
+window.closeChangeBox = closeChangeBox;
+window.changeImagePreview = changeImagePreview;
+window.previewImage = previewImage;

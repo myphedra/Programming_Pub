@@ -206,7 +206,7 @@
                                     </tr>
                                 </thead>
                                 <tbody id="product-table-body">
-                                    <!-- Sản phẩm sẽ được thêm vào đây -->
+                                    
                                 </tbody>
                             </table>
                         </div>
@@ -244,8 +244,13 @@
                                 </select>
                                 <label for="price">Giá</label>
                                 <input type="text" id="price" placeholder="Nhập giá sản phẩm...">
-                                <label for="image-upload">Ảnh</label>
-                                <input type="file" id="image-upload">
+                                <div class="image-upload-container">
+                                    <label for="image-upload">Ảnh</label>
+                                    <input type="file" id="image-upload" accept="image/*" onchange="previewImage(event)" class="short-file-input">
+                                    <div class="product-image-container">
+                                        <img id="img-preview" src="./img-prd/img-add2.png" alt="Product Image" >
+                                    </div>
+                                </div><br>
                                 <div class="buttons">
                                     <button type="button" class="delete-btn">Xóa</button>
                                     <button type="submit" class="add-btn">Thêm</button>
@@ -259,8 +264,8 @@
                     <div id="changeproduct" class="modal-content">
                         <button class="close" onclick="closeChangeBox()">×</button>
                         <div class="image">
-                            <img id="imgbefore" src="path/to/image.jpg" alt="Ảnh trước">
-                            <img id="imgafter" src="path/to/image.jpg" alt="Ảnh sau">
+                            <img id="imgbefore" src="" alt="Ảnh trước">
+                            <img id="imgafter" src="" alt="Ảnh sau">
                         </div>
                         <div class="info">
                             <label for="edit-name">Tên sản phẩm</label>
@@ -475,7 +480,7 @@
         </main>
     </section>
 
-    <script type="module" src="./script.js"></script>
+    <script type="module" src="./script.js"></script> 
 </body>
 </html>
 

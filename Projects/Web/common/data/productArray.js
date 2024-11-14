@@ -1,7 +1,7 @@
 
 // MẢNG LƯU TRỮ SẢN PHẨM
 const productArray = [
-    {brandId: 'Samsung', img:'./img-prd/ss1.png', name: 'Samsung Galaxy A06', oldPrice: 4090000, pb1: '4GB/128GB', pb2: '8GB/512GB', chip: 'MediaTek G85', pin: '5.000mAh', size: '6.7"', f: '60Hz'},  
+    {brandId: 'Samsung', img:'img-prd/ss1.png', name: 'Samsung Galaxy A06', oldPrice: 4090000, pb1: '4GB/128GB', pb2: '8GB/512GB', chip: 'MediaTek G85', pin: '5.000mAh', size: '6.7"', f: '60Hz'},  
     {brandId: 'Samsung', img:'img-prd/ss2.png', name: 'Samsung Galaxy A15', oldPrice: 4190000, pb1: '8GB/128GB', pb2: '16GB/512GB', chip: 'Helio G99', pin: '5.000mAh', size: '6.5"', f: '90Hz'},  
     {brandId: 'Samsung', img:'img-prd/ss3.png', name: 'Samsung Galaxy A05S', oldPrice: 3990000, pb1: '4GB/128GB', pb2: '8GB/512GB', chip: 'Snap 680', pin: '5.000mAh', size: '6.7"', f: '90Hz'},  
     {brandId: 'Samsung', img:'img-prd/ss4.png', name: 'Samsung Galaxy A25 5G', oldPrice: 6590000, pb1: '6GB/128GB', pb2: '8GB/512GB', chip: 'Exynos 1280', pin: '5.000mAh', size: '6.5"', f: '120Hz'},  
