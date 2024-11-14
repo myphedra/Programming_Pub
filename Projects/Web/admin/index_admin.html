@@ -68,7 +68,7 @@
         </nav>
 
         <!-- MAIN -->
-        <main>
+        <main> 
             <!-- DASHBOARD PAGE -->
             <div class="main-item" id="main__dashboard">
                 <div class="products-orders">
@@ -190,12 +190,12 @@
 
             <!-- PRODUCTS PAGE -->
             <div class="main-item" id="main__products">
-                <div class="container">
+                <div id="container">
                     <!-- PRODUCTS TABLE -->
-                    <div class="main-content">
-                        <div class="product-list">
+                    <div id="leftsection">
+                        <div id="product-list">
                             <table class="product-table">
-                                <thead class="product-header">
+                                <thead class="product-table__header">
                                     <tr>
                                         <th>#ID</th>
                                         <th>Ảnh</th>
@@ -205,15 +205,15 @@
                                         <th>Hành động</th>
                                     </tr>
                                 </thead>
-                                <tbody id="product-table-body">
-                                    
+                                <tbody id="product-table__body">
+                                    <!-- Sản Phẩm ở đây -->
                                 </tbody>
                             </table>
                         </div>
-                        <div class="pagination" id="pagination"></div>
+                        <div id="pagination"></div>
                     </div>
-                    <div class="user-mode">
-                        <div class="search">
+                    <div id="rightsection">
+                        <div class="subsection">
                             <h2>TÌM KIẾM SẢN PHẨM</h2><br>
                             <form>
                                 <label for="product-name">Tên sản phẩm</label>
@@ -229,7 +229,7 @@
                                 </select>
                             </form>
                         </div>
-                        <div class="add">
+                        <div class="subsection">
                             <h2>THÊM SẢN PHẨM</h2><br>
                             <form>
                                 <label for="new-product-name">Tên sản phẩm</label>
@@ -288,10 +288,10 @@
             <!-- ORDERS PAGE -->
             <div class="main-item" id="main__orders">
                 <!-- <h1>ORDERS</h1> -->
-                <div class="container">
+                <div id="container">
                     <!-- PRODUCTS TABLE -->
-                    <div class="main-content">
-                        <div class="product-list">
+                    <div id="leftsection">
+                        <div id="product-list">
                             <table class="product-table">
                                 <thead class="product-header">
                                     <tr>
@@ -326,7 +326,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="user-mode">
+                    <div id="rightsection">
                         <h2>BỘ LỌC</h2>
                         <div class="filter">
                             <br>
@@ -374,10 +374,10 @@
                 </div>
 
                 <!-- Theo sản phẩm -->
-                <div class="container">
+                <div id="container">
                     <!-- PRODUCTS TABLE -->
-                    <div class="main-content">
-                        <div class="product-list">
+                    <div id="leftsection">
+                        <div id="product-list">
                             <table class="product-table">
                                 <thead class="product-header">
                                     <th>DOANH THU THEO SẢN PHẨM</th>
@@ -406,7 +406,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="user-mode">
+                    <div id="rightsection">
                         <!-- Tổng doanh thu của các sản phẩm -->
                         <div class="total-revenue">
                             <h2>Tổng doanh thu</h2>
@@ -428,10 +428,10 @@
                 </div>
 
                 <!-- Theo khách hàng -->
-                <div class="container">
+                <div id="container">
                     <!-- PRODUCTS TABLE -->
-                    <div class="main-content">
-                        <div class="product-list">
+                    <div id="leftsection">
+                        <div id="product-list">
                             <table class="product-table">
                                 <thead class="product-header">
                                     <th>DOANH THU KHÁCH HÀNG</th>
@@ -454,7 +454,7 @@
                             </table>
                         </div>
                     </div>
-                    <div class="user-mode">
+                    <div id="rightsection">
                         <!-- Tổng doanh thu của khách hàng -->
                         <div class="total-revenue">
                             <h2>Tổng doanh thu</h2>

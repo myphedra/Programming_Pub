@@ -104,7 +104,7 @@ function filterProducts() {
 }
 // Sau khi tạo bảng sản phẩm
 function displayPage(page) {
-    const tableBody = document.getElementById('product-table-body');
+    const tableBody = document.getElementById('product-table__body');
     if (!tableBody) return;
     tableBody.innerHTML = '';
 
@@ -272,7 +272,7 @@ function addNewProduct(e) {
 }
 
 // Xóa sản phẩm
-document.getElementById('product-table-body').addEventListener('click', function(event) {
+document.getElementById('product-table__body').addEventListener('click', function(event) {
     if (event.target.classList.contains('delete-btn')) {
         const row = event.target.closest('tr');
         const productIndex = parseInt(row.getAttribute('data-id'));
