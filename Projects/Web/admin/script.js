@@ -349,7 +349,7 @@ function showChangeProductBox(productIndex) {
     document.getElementById('edit-name').value = product.name;
     document.getElementById('edit-price').value = product.oldPrice;
     document.getElementById('imgbefore').src = product.img;
-    document.getElementById('imgafter').src = 'img-prd/img-add.jpg';
+    document.getElementById('imgafter').src = 'img-prd/add-img-phone.webp';
 
     // Cập nhật sự kiện lưu
     const saveButton = document.getElementById('save');

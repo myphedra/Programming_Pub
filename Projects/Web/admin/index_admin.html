@@ -268,8 +268,10 @@
                                     <label for="price">Giá</label>
                                     <input type="text" id="price" placeholder="Nhập giá sản phẩm...">
                                     <div class="image-upload-container">
-                                        <label for="image-upload">Ảnh</label>
-                                        <input type="file" id="image-upload" accept="image/*" onchange="previewImage(event)" class="short-file-input">
+                                        <div class="image-upload-container__info">
+                                            <label for="image-upload">Ảnh</label>
+                                            <input type="file" id="image-upload" accept="image/*" onchange="previewImage(event)">
+                                        </div>
                                         <div class="product-image-container">
                                             <img id="img-preview" src="./img-prd/img-add2.png" alt="Product Image">
                                         </div>
@@ -284,8 +286,8 @@
                     </div>
                     <!-- POP-UP SỬA SẢN PHẨM -->
                     <div id="modal1" class="modal">
-                        <div id="changeproduct" class="modal-content">
-                            <button class="close" onclick="closeChangeBox()">×</button>
+                        <div id="changeproduct">
+                            <button class="close" onclick="closeChangeBox()">+</button>
                             <div class="image">
                                 <img id="imgbefore" src="" alt="Ảnh trước">
                                 <img id="imgafter" src="" alt="Ảnh sau">
