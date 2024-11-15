@@ -5,10 +5,11 @@ export class Cart {
     /* localStorageKey: username của customer tương ứng với cart */
     localStorageKey;        // private
     cartItem = [];          // mảng các products
-    
+    counterProducts;         // Tổng số lượng product trong Cart
     // Khởi tạo cart ban đầu: load lên từ localStorage
     constructor(localStorageKey){
         this.localStorageKey = localStorageKey;
+        this.counterProducts = 0;
         this.loadCartFromStorage();
     }
 
@@ -93,6 +94,8 @@ export class Cart {
             );
             console.log('Added product ' + product.productId + ' to cart of ' + this.localStorageKey);
         }
+        // Thay đổi counterProducts:
+        this.counterProducts += product.quantity;
         // Cập nhật lại cart mới:
         this.saveCartToStorage();
     }
@@ -122,16 +125,19 @@ export class Cart {
     // }
     // Xóa product trong cart
     removeFromCart(productId){
-        const newCart = [];
-        this.cartItem.forEach((cartItem) => {
-            if(productId !== cartItem.productId){
-                newCart.push(cartItem);
+        const newCartItem = [];
+        this.counterProducts = 0;
+        this.cartItem.forEach((item) => {
+            // Không phải product cần xóa thì thêm vào newCartItem
+            if(productId !== item.productId){
+                newCartItem.push(item);
+                this.counterProducts += item.quantity;
             }
         });
-        this.cartItem = newCart;
+        this.cartItem = newCartItem;
 
         console.log('Removed product with ID: ' + productId);
-        saveCartToStorage();
+        this.saveCartToStorage();
     }
 
     /** Chọn các product để mua:
@@ -145,6 +151,6 @@ export class Cart {
             }
         });
         // Lưu vào localStorage sau khi thay đổi:
-        saveCartToStorage();
+        this.saveCartToStorage();
     }
 }

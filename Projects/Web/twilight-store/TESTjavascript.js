@@ -831,7 +831,9 @@ function changePage(page) {
 
 //===== KHỞI TẠO LẠI TRANG =====//
 // Tổng số lượng sản phẩm đã được thêm vào cart
-let slproductPicked=0;
+
+// let slproductPicked = 0;     -> thay thế bằng counterProducts trong Cart obj
+
 //----------------KHOI TAO MANG productPicked EMPTY TRUOC KHI LOAD----------
 // let productPicked = [];
 // let productPicked;
@@ -886,6 +888,10 @@ function giohang(product){
     // addToCart sản phẩm được người dùng chọn
     cart.addToCart(addProduct); 
 
+    // slproductPicked += addQuantity;
+    console.log(cart.counterProducts);
+    updateCartCount();   
+
 }
 // function giohang(product) 
 // {  
@@ -911,7 +917,7 @@ function giohang(product){
 function updateCartCount() 
 {   
     const cartBadge = document.querySelector('.cart-badge');  
-    cartBadge.textContent = slproductPicked; // Cập nhật số lượng sản phẩm  
+    cartBadge.textContent = cart.counterProducts; // Cập nhật số lượng sản phẩm  
 }
 
 
@@ -931,6 +937,7 @@ window.reloadPage = reloadPage;
 window.renderProducts = renderProducts;
 window.renderPagination = renderPagination;
 window.changePage = changePage;
+window.updateCartCount = updateCartCount;
 //-------------------------------------------
 
 
