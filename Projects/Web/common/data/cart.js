@@ -1,10 +1,10 @@
 /** CART ĐƯỢC LƯU RỜI RẠC, 
  * TRUY XUẤT THÔNG QUA USERNAME(of CUSTOMER)
  */
-class Cart {
+export class Cart {
     /* localStorageKey: username của customer tương ứng với cart */
     localStorageKey;          // private
-    cartItem = undefined;      // mảng các products
+    cartItem = [];      // mảng các products
     
     // Khởi tạo cart ban đầu: load lên từ localStorage
     constructor(localStorageKey){
@@ -27,9 +27,22 @@ class Cart {
                     productId: '',
                     quantity: 0,
                     isPicked: false,        // Đánh dấu product được chọn để mua.
+                    //-----FOR USER-----
+                    brandId: '',
+                    img: '',
+                    name: '',
+                    pb: '',
+                    price: 0,
+                    chip: '',
+                    pin: '',
+                    size: '',
+                    f: '',
+                    //------------------
                 },
             ];
         }
+
+        console.log('Loaded cart of ' + this.localStorageKey);
     }
     /** SAVE CART TO localStorage: 
      * Chuyển cartItem về string
@@ -37,34 +50,72 @@ class Cart {
      */
     saveCartToStorage(){
         localStorage.setItem(this.localStorageKey, JSON.stringify(this.cartItem));
+
+        console.log('Saved cart of ' + this.localStorageKey);
     }
     /** THÊM PRODUCT VÀO CART: tìm trong cart product cần thêm
      * Có: tăng quantity lên
      * Không: thêm product mới vào cart
      */
-    addToCart(productId){
-        // Tìm product trong cart
+    addToCart(product){
+        // Tìm product với productId trong cart
         let matchingProduct;
         this.cartItem.forEach((item) => {
-            if(item.productId === productId){
+            if(item.productId === product.productId){
                 matchingProduct = item;
             }
         });
         // Có thì tăng quantity, chưa có thì add
         if(matchingProduct){
-            matchingProduct.quantity++;
+            matchingProduct.quantity += product.quantity;
+            // matchingProduct.quantity++;
         } else {
             this.cartItem.push(
                 {
-                    productId: productId,
+                    productId: product.productId,
                     quantity: 1,
                     isPicked: false,
+                    //--------------
+                    brandId: product.brandId,
+                    img: product.img,
+                    name: product.name,
+                    pb: product.pb,
+                    price: product.price,
+                    chip: product.chips,
+                    pin: product.pin,
+                    size: product.size,
+                    f: product.f,
                 }
             );
         }
+        console.log('Added product ' + productId + 'to cart of ' + this.localStorageKey);
         // Cập nhật lại cart mới:
         saveCartToStorage();
     }
+    // addToCart(productId){
+    //     // Tìm product trong cart
+    //     let matchingProduct;
+    //     this.cartItem.forEach((item) => {
+    //         if(item.productId === productId){
+    //             matchingProduct = item;
+    //         }
+    //     });
+    //     // Có thì tăng quantity, chưa có thì add
+    //     if(matchingProduct){
+    //         matchingProduct.quantity++;
+    //     } else {
+    //         this.cartItem.push(
+    //             {
+    //                 productId: productId,
+    //                 quantity: 1,
+    //                 isPicked: false,
+    //             }
+    //         );
+    //     }
+    //     console.log('Added product ' + productId + 'to cart of ' + this.localStorageKey);
+    //     // Cập nhật lại cart mới:
+    //     saveCartToStorage();
+    // }
     // Xóa product trong cart
     removeFromCart(productId){
         const newCart = [];
@@ -74,6 +125,8 @@ class Cart {
             }
         });
         this.cartItem = newCart;
+
+        console.log('Removed product with ID: ' + productId);
         saveCartToStorage();
     }
 

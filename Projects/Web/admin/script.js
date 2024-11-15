@@ -3,29 +3,35 @@ import productArray from '../common/data/productArray.js'; // Import mảng sả
 // SIDEBAR 
 // Thay đổi trạng thái "active | disable" cho các <li>: 
 // click -> active, remove active cho các <li> khác
-const allSideMenuItems = document.querySelectorAll('#sidebar .side-menu li a');
-allSideMenuItems.forEach(item => {
-    // Lưu lại <li> muốn show
-    const li = item.parentElement;
-    item.addEventListener('click', () => {
-        // Tất cả <li> bị xóa class item--active khi 'click'
-        allSideMenuItems.forEach(i => {
-            i.parentElement.classList.remove('item--active');
+function changeActiveSideBar(){
+    const allSideMenuItems = document.querySelectorAll('#sidebar .side-menu li a');
+    allSideMenuItems.forEach(item => {
+        // Lưu lại <li> muốn show
+        const li = item.parentElement;
+        item.addEventListener('click', () => {
+            // Tất cả <li> bị xóa class item--active khi 'click'
+            allSideMenuItems.forEach(i => {
+                i.parentElement.classList.remove('item--active');
+            });
+            // Thêm lớp item--active vào thẻ <li> cha, cái được 'click'
+            li.classList.add('item--active');
         });
-        // Thêm lớp item--active vào thẻ <li> cha, cái được 'click'
-        li.classList.add('item--active');
-    });
-});
-
-// TOGGLE SIDEBAR
-const menuBar = document.querySelector('#content nav #hidden-sidebar-btn');
-const sideBar = document.getElementById('sidebar');
-
-if (menuBar && sideBar) {
-    menuBar.addEventListener('click', () => {
-        sideBar.classList.toggle('hide');
     });
 }
+changeActiveSideBar();
+
+// TOGGLE SIDEBAR
+function zoomInSideBar(){
+    const menuBar = document.querySelector('#content nav #hidden-sidebar-btn');
+    const sideBar = document.getElementById('sidebar');
+    
+    if (menuBar && sideBar) {
+        menuBar.addEventListener('click', () => {
+            sideBar.classList.toggle('hide');
+        });
+    }
+}
+zoomInSideBar();
 /* END SIDEBAR */ 
 
 /** HIỆN TỪNG MAIN-ITEM TƯƠNG ỨNG KHI ẤN VÀO THANH SIDEBAR 
@@ -38,7 +44,6 @@ function hideAllMainItems() {
         item.style.display = 'none';
     });
 }
-
 // Func: hiển thị cụ thể main-item được 'click' tương ứng tại sidebar
 function showMainItem(itemId) {
     hideAllMainItems();
@@ -47,21 +52,24 @@ function showMainItem(itemId) {
         item.style.display = 'block';  // Hiển thị main-item theo id
     }
 }
-
 // Đặt event 'click' cho phần main-item tương ứng tại sidebar
-const sidebarItems = ['sidebar__dashboard', 'sidebar__products', 'sidebar__customers', 'sidebar__orders', 'sidebar__statistics'];
-sidebarItems.forEach(id => {
-    const element = document.getElementById(id);
-    if (element) {
-        element.onclick = () => showMainItem(`main__${id.split('__')[1]}`);
-    }
-});
+function showCorrespondingMain(){
+    const sidebarItems = ['sidebar__dashboard', 'sidebar__products', 'sidebar__customers', 'sidebar__orders', 'sidebar__statistics'];
+    sidebarItems.forEach(id => {
+        const element = document.getElementById(id);
+        if (element) {
+            element.onclick = () => showMainItem(`main__${id.split('__')[1]}`);
+        }
+    });
+}
+showCorrespondingMain();
 
 // Hiển thị main__dashboard mặc định khi tải trang
 showMainItem('main__dashboard');
 
 // Lưu mảng sản phẩm vào localStorage
 localStorage.setItem('productArray', JSON.stringify(productArray));
+
 
 /* MAIN__PRODUCTS */
 // Hiển thị modal và tải thông tin sản phẩm vào modal để chỉnh sửa
@@ -375,3 +383,13 @@ window.showChangeProductBox = showChangeProductBox;
 window.closeChangeBox = closeChangeBox;
 window.changeImagePreview = changeImagePreview;
 window.previewImage = previewImage;
+
+window.saveProductChanges = saveProductChanges;
+
+// //--------------KHÔNG CẦN CODE NÀY: WINDOW... CHỈ ÁP DỤNG CHO DOM KHI LOAD HTML------------------
+// window.changeActiveSideBar = changeActiveSideBar;
+// window.zoomInSideBar = zoomInSideBar;
+// window.hideAllMainItems = hideAllMainItems;
+// window.showMainItem = showMainItem;
+// window.showCorrespondingMain = showCorrespondingMain;
+// //--------------------------------
