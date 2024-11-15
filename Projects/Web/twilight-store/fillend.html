@@ -76,147 +76,85 @@
     <div class="modal">
         <div class="modal__overlay"></div>
 
-        <div class="modal__body">
-            
-            <div class="auto-form" id="login-form"> 
-                <div class="auto-form__container">
-                    <div class="auto-form__line"></div>
-                    <div class="auto-form__header">
-                        <h3 class="auto-form__heading">Đăng nhập</h3>
-                        <span class="auto-form_switch-btn">Đăng ký</span>
-                    </div>
-                    <div class="auto-form__form">
-                        <div class="auto-form__group">
-                            <input type="username" class="auto-form__input" placeholder="Tài khoản của bạn">
-                        </div>
-                        <div class="auto-form__group">
-                            <input type="password" class="auto-form__input" placeholder="Mật khẩu của bạn">
-                        </div>
-
-                    </div>
-                    <div class="auto-form__aside">
-                        <div class="auto-form__help">
-                            <a href="" class="auto-form__help-link auto-form__help-forgot">Quên mật khẩu?</a>
-                            <span class="auto-form__help-separate"></span>
-                            <a href="/twilight-store/" class="auto-form__help-link auto-form__help-help">Cần trợ giúp</a>
-                        </div>
-                    </div>
-                    <div class="auto-form__controls">
-                        <button class="btn auto-form__controls-back">TRỞ VỀ</button>
-                        <button onclick="Dangnhap();" class="btn btn--primary">ĐĂNG NHẬP</button>
-                    </div>
-                </div>
-            </div>  
-                
-            <div class="auto-form" id="register-form">
-                <div class="auto-form__container">
-                    <div class="auto-form__line"></div>
-                    <div class="auto-form__header">
-                        <h3 class="auto-form__heading">Đăng ký</h3>
-                        <span class="auto-form_switch-btn">Đăng nhập</span>
-                    </div>
-                    <div class="auto-form__form">
-                        <div class="auto-form__group">
-                            <input type="username" class="auto-form__input" placeholder="Tài khoản của bạn">
-                        </div>
-                        <div class="auto-form__group">
-                            <input type="password" class="auto-form__input" placeholder="Mật khẩu của bạn">
-                        </div>
-                        <div class="auto-form__group">
-                            <input type="password" class="auto-form__input" placeholder="Nhập lại mật khẩu">
-                        </div>
-                    </div>
-                    <div class="auto-form__aside">
-                        <p class="auto-form__policy-text">Bằng việc đăng kí, bạn đã đồng ý với Twilight Store về
-                            <a href="" class="auto-form__policy-link">Điều khoản dịch vụ</a> &
-                            <a href="" class="auto-form__policy-link">Chính sách bảo mật</a>
-                        </p>
-                    </div>
-                    <div class="auto-form__controls">
-                        <button class="btn auto-form__controls-back">TRỞ VỀ</button>
-                        <button onclick="Dangky();" class="btn btn--primary">ĐĂNG KÝ</button>
-                    </div>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <div class="modal-profile-a ">
+    <div class="modal-profile-a">
         <div class="modal__overlay-profile"></div>
         <div class="modal__body-profile">
-          <form>
-            <div class="form-container">
-              <h2 class="form-title">Thông tin khách hàng</h2>
-              
-              <label class="form-label">Tên đăng nhập</label>
-              <input type="text" class="form-input" disabled>
-              
-              <label class="form-label">Họ và tên</label>
-              <input type="text" class="form-input">
-              
-              <label class="form-label">Số điện thoại</label>
-              <input type="text" class="form-input">
-              
-              <label class="form-label">Tỉnh/Thành phố</label>
-              <select class="form-input" id="province">
-                <option value="">Chọn Tỉnh/Thành phố</option>
-                <option value="tp-hcm">Thành phố Hồ Chí Minh</option>
-                <option value="long-an">Long An</option>
-                <option value="binh-dinh">Bình Định</option>
-              </select>
-              
-              <label class="form-label">Quận/Huyện</label>
-              <select class="form-input" id="district">
-                <option value="">Chọn Quận/Huyện</option>
-              </select>
-              
-              <label class="form-label">Phường/Xã</label>
-              <input type="text" class="form-input">
-              
-              <div class="button-container">
-                <input type="button" class="goback" value="Quay lại">
-                <input type="submit" value="Lưu thông tin" class="submit-button">
-              </div>
-            </div>
-          </form>
+            <form id="customer-form">
+                <div class="form-container">
+                    <h2 class="form-title">Thông tin khách hàng</h2>
+                    
+                    <label class="form-label">Tên đăng nhập</label>
+                    <input type="text" class="form-input" id="username" >
+                    
+                    <label class="form-label">Họ và tên</label>
+                    <input type="text" class="form-input" id="fullname">
+                    
+                    <label class="form-label">Số điện thoại</label>
+                    <input type="text" class="form-input" id="phone">
+                    
+                    <label class="form-label">Tỉnh/Thành phố</label>
+                    <select class="form-input" id="province">
+                        <option value="">Chọn Tỉnh/Thành phố</option>
+                        <option value="tp-hcm">Thành phố Hồ Chí Minh</option>
+                        <option value="long-an">Long An</option>
+                        <option value="binh-dinh">Bình Định</option>
+                    </select>
+                    
+                    <label class="form-label">Quận/Huyện</label>
+                    <select class="form-input" id="district">
+                        <option value="">Chọn Quận/Huyện</option>
+                    </select>
+                    
+                    <label class="form-label">Phường/Xã</label>
+                    <input type="text" class="form-input" id="ward">
+                    
+                    <div class="button-container">
+                        <input type="button" class="goback" value="Quay lại">
+                        <input type="submit" value="Lưu thông tin" class="submit-button">
+                    </div>
+                </div>
+            </form>
         </div>
     </div>
+    
     <div class="modal-profile-b">
         <div class="modal__overlay-profile"></div>
         <div class="modal__body-profile">
-          <form>
-            <div class="form-container">
-              <h2 class="form-title">Thông tin Thẻ Tín dụng/Ghi nợ</h2>
-              
-              <label class="form-label">Số thẻ</label>
-              <input type="text" class="form-control card-number" placeholder="XXXX XXXX XXXX XXXX">
-              
-              <div class="row">
-                <div class="col">
-                  <label class="form-label">Ngày hết hạn</label>
-                  <input type="text" class="form-control expiry-date" placeholder="MM/YY">
+            <form id="card-form">
+                <div class="form-container">
+                    <h2 class="form-title">Thông tin Thẻ Tín dụng/Ghi nợ</h2>
+                    
+                    <label class="form-label">Số thẻ</label>
+                    <input type="text" class="form-control card-number" id="card-number" placeholder="XXXX XXXX XXXX XXXX">
+                    
+                    <div class="row">
+                        <div class="col">
+                            <label class="form-label">Ngày hết hạn</label>
+                            <input type="text" class="form-control expiry-date" id="expiry-date" placeholder="MM/YY">
+                        </div>
+                        <div class="col">
+                            <label class="form-label">Mã CVV</label>
+                            <input type="text" class="form-control cvv" id="cvv" placeholder="XXX">
+                        </div>
+                    </div>
+                    
+                    <label class="form-label">Họ và tên chủ thẻ</label>
+                    <input type="text" class="form-control cardholder-name" id="cardholder-name">
+                    
+                    <label class="form-label">Địa chỉ đăng ký thẻ Tín dụng/Ghi nợ</label>
+                    <input type="text" class="form-control billing-address" id="billing-address">
+                    
+                    <label class="form-label">Mã bưu chính</label>
+                    <input type="text" class="form-control zip-code" id="zip-code">
+                    
+                    <div class="button-container">
+                        <input type="button" class="goback" value="Quay lại">
+                        <input type="submit" value="Lưu thông tin" class="submit-button">
+                    </div>
                 </div>
-                <div class="col">
-                  <label class="form-label">Mã CVV</label>
-                  <input type="text" class="form-control cvv" placeholder="XXX">
-                </div>
-              </div>
-              
-              <label class="form-label">Họ và tên chủ thẻ</label>
-              <input type="text" class="form-control cardholder-name">
-              
-              <label class="form-label">Địa chỉ đăng ký thẻ Tín dụng/Ghi nợ</label>
-              <input type="text" class="form-control billing-address">
-              
-              <label class="form-label">Mã bưu chính</label>
-              <input type="text" class="form-control zip-code">
-              
-              <div class="button-container">
-                <input type="button" class="goback" value="Quay lại">
-                <input type="submit" value="Lưu thông tin" class="submit-button">
-              </div>
-            </div>
-          </form>
+            </form>
         </div>
     </div>
 
@@ -292,14 +230,21 @@
                 <h4 class="section-header">Phương thức thanh toán</h4>
 
                 <div class="vd"><p><input type="radio" name="payment" value="cash" checked> Thanh toán khi nhận hàng</p></div>
-                <div class="vd"><p><input type="radio" name="payment" value="bank"> Thanh toán bằng chuyển khoản</p></div>
+
                 <div class="vd">
                     <p>
-                        <input type="radio" name="payment" value="card" id="card-payment-option" checked>
-                        <label for="card-payment-option">Thanh toán qua thẻ tín dụng</label>
+                        <input type="radio" name="payment" value="bank" id="bank-payment-option">
+                        <label for="bank-payment-option">Thanh toán bằng chuyển khoản</label>
                     </p>
                 </div>
                 
+                <div id="bank-image-container" style="display: none;">
+                    <img class="imgbank" src="./accessts/img/logistic/bankin.png" alt="Bank Transfer Image" id="bank-image">
+                </div>
+                
+
+
+
                 <div class="payment-options" id="additional-options">
                     <!-- Option 2: Thẻ từ tài khoản -->
                     <div class="payment-option">
