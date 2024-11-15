@@ -3,8 +3,8 @@
  */
 export class Cart {
     /* localStorageKey: username của customer tương ứng với cart */
-    localStorageKey;          // private
-    cartItem = [];      // mảng các products
+    localStorageKey;        // private
+    cartItem = [];          // mảng các products
     
     // Khởi tạo cart ban đầu: load lên từ localStorage
     constructor(localStorageKey){
@@ -22,23 +22,24 @@ export class Cart {
         
         // Nếu cart null (chưa có product), gán giá trị mặc định hoặc thông báo (có thể)...
         if(!this.cartItem){
+            console.log('Cart null');
             this.cartItem = [
-                {
-                    productId: '',
-                    quantity: 0,
-                    isPicked: false,        // Đánh dấu product được chọn để mua.
-                    //-----FOR USER-----
-                    brandId: '',
-                    img: '',
-                    name: '',
-                    pb: '',
-                    price: 0,
-                    chip: '',
-                    pin: '',
-                    size: '',
-                    f: '',
-                    //------------------
-                },
+                // {
+                //     productId: '',
+                //     quantity: 0,
+                //     isPicked: false,        // Đánh dấu product được chọn để mua.
+                //     //-----FOR USER-----
+                //     brandId: '',
+                //     img: '',
+                //     name: '',
+                //     pb: '',
+                //     price: 0,
+                //     chip: '',
+                //     pin: '',
+                //     size: '',
+                //     f: '',
+                //     //------------------
+                // },
             ];
         }
 
@@ -58,39 +59,42 @@ export class Cart {
      * Không: thêm product mới vào cart
      */
     addToCart(product){
-        // Tìm product với productId trong cart
+        // Tìm product với productId và phiên bản tương ứng trong cart
         let matchingProduct;
         this.cartItem.forEach((item) => {
-            if(item.productId === product.productId){
+            if(item.productId === product.productId && item.pb === product.pb){
                 matchingProduct = item;
             }
         });
-        // Có thì tăng quantity, chưa có thì add
+        // Có sản phẩm với productId và phiên bản tương ứng
+        // thì tăng quantity, ngược lại: add
         if(matchingProduct){
             matchingProduct.quantity += product.quantity;
             // matchingProduct.quantity++;
+            console.log('Product ' + matchingProduct.productId + ' existed, increase quantity.');
         } else {
             this.cartItem.push(
-                {
-                    productId: product.productId,
-                    quantity: 1,
-                    isPicked: false,
-                    //--------------
-                    brandId: product.brandId,
-                    img: product.img,
-                    name: product.name,
-                    pb: product.pb,
-                    price: product.price,
-                    chip: product.chips,
-                    pin: product.pin,
-                    size: product.size,
-                    f: product.f,
-                }
+                product
+                // {
+                //     productId: product.productId,
+                //     quantity: product.quantity,
+                //     isPicked: false,
+                //     //--------------
+                //     brandId: product.brandId,
+                //     img: product.img,
+                //     name: product.name,
+                //     pb: product.pb,
+                //     price: product.price,
+                //     chip: product.chips,
+                //     pin: product.pin,
+                //     size: product.size,
+                //     f: product.f,
+                // }
             );
+            console.log('Added product ' + product.productId + ' to cart of ' + this.localStorageKey);
         }
-        console.log('Added product ' + productId + 'to cart of ' + this.localStorageKey);
         // Cập nhật lại cart mới:
-        saveCartToStorage();
+        this.saveCartToStorage();
     }
     // addToCart(productId){
     //     // Tìm product trong cart

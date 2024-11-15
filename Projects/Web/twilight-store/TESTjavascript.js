@@ -1,5 +1,9 @@
 import {customerArray, checkExistedUsername, checkValidAccount, addCustomerToArray} from '../common/data/customerArray.js';
-import {Cart} from '../common/data/cart.js'
+import {Cart } from '../common/data/cart.js'
+
+//-----
+let cart = undefined;
+//-----
 
 var slideIndex = 0;
 showSlides();
@@ -194,6 +198,7 @@ function TAIKHOAN(username)
  * DONE: isSignIn -> true
  * NOT: isSignIn -> false
  */
+
 let isSignIn = false;
 function Dangnhap() 
 {
@@ -210,7 +215,8 @@ function Dangnhap()
     
     // Change: kiểm tra đăng nhập đúng với customerArray
     if(true == checkValidAccount(username, password)){
-        //-----------
+        // Khi đăng nhập thành công, load Cart tưng ứng lên từ localStorage
+        cart = new Cart(username);
         isSignIn = true;        
         //-----------
         alert("Đã đăng nhập thành công với tài khoản: " + username);  
@@ -268,7 +274,6 @@ function Dangky()
         }  
     
     // Change: kiểm tra sự tồn tại của username trong customerArray  
-    
     if(checkExistedUsername(username) == true){
         alert("Tên tài khoản " + username +" đã được đăng ký!\nVui lòng đăng nhập hoặc đổi tên tài khoản khác!");   
         return;
@@ -280,7 +285,12 @@ function Dangky()
         // Change: thêm new customer vào customerArray khi đăng kí thành công
         addCustomerToArray(username, password);
         dem++; 
-        console.log('Added user: ' + username );
+        console.log('Added to customerArray user: ' + username );
+
+        // Khi đăng kí thành công, tạo Cart obj tương ứng với username
+        cart = new Cart(username);
+        console.log('Create Cart with username: ' + username);
+        //-----------------
     }
     // for (let account of accounts) 
     //     {  
@@ -324,6 +334,9 @@ function Dangky()
 // HÀM ĐĂNG XUẤT
 function Dangxuat()
 {
+    //-------
+    isSignIn = false;
+    //-------
     document.getElementById('log-out').addEventListener('click', function(event) 
     {  
         event.preventDefault(); // Ngăn chặn hành vi mặc định của liên kết  
@@ -737,20 +750,6 @@ function quayve()
     }  
 }
 
-//-------------------------------------------
-/** MODULE: khi tạo 'module', các file trong js trở thành scope chỉ trong file đó.
- * Dẫn đến: khi dùng DOM để tạo html, không thể dùng 'onclick',
- *          vì chúng không được gán cho window
- * ==> Gán cho 'window' các hàm dùng DOM để tạo html.
- */
-window.showProductDetails = showProductDetails;
-window.quayve = quayve;
-window.giohang = giohang;
-window.Dangky = Dangky;
-window.Dangnhap = Dangnhap;
-window.Dangxuat = Dangxuat;
-window.reloadPage = reloadPage;
-//-------------------------------------------
 
 //===== HIỂN THỊ SẢN PHẨM VÀ PHÂN TRANG =====//
 function renderProducts(products, page) {
@@ -834,7 +833,7 @@ function changePage(page) {
 // Tổng số lượng sản phẩm đã được thêm vào cart
 let slproductPicked=0;
 //----------------KHOI TAO MANG productPicked EMPTY TRUOC KHI LOAD----------
-let productPicked = [];
+// let productPicked = [];
 // let productPicked;
 
 //-----------TAO HAM KHOI TAO LAI TRANG------------
@@ -859,19 +858,33 @@ reloadPage();
 
 //===== THÊM VÀO GIỎ HÀNG =====//
 /** HTML onclick: khi user nhấn THÊM VÀO GIỎ HÀNG -> call function giohang()
- * @param: object - product (JSON.stringify(productPicked)) product in productArray
+ * @param: object - product (JSON.stringify(productPicked) | product in productArray
+ * 
+ * Khi người dùng đăng nhập thành công, tạo Cart Object tương ứng với khách hàng đó.
+ * Thao tác với Cart đó, trong lúc người dùng đang đăng nhập với tài khoản của mình.
  */
+
 function giohang(product){
-    const numberInput = document.querySelector('.Number');  
-    let value = parseInt(numberInput.value);   
-    const sp = {  
-        brandId: product.brandId || 'Unknown',  
-        img: product.img || 'default-image.jpg', 
-        name: product.name || 'Unnamed Product',  
-        pb: vs,         // in function which create HTML (DOM) -> THONG TIN CHI TIET SAN PHAM
-        price: gia,     // in function which create HTML (DOM) -> THONG TIN CHI TIET SAN PHAM
-        sl: value       
+    // console.log(typeof product);         // => object
+    // Số lượng product mà người dùng addToCart
+    const addQuantity = parseInt(document.querySelector('.Number').value);   
+    // Product mà người dùng addToCart
+    const addProduct = {  
+        productId: product.productId,
+        quantity: addQuantity,
+        isPicked: false,
+        brandId: product.brandId,
+        img: product.img,
+        pb: product.pb,
+        price: newPrice(product.oldPrice),
+        chip: product.chip,
+        pin: product.pin,
+        size: product.size,
+        f: product.f,
     };  
+
+    // addToCart sản phẩm được người dùng chọn
+    cart.addToCart(addProduct); 
 
 }
 // function giohang(product) 
@@ -902,7 +915,23 @@ function updateCartCount()
 }
 
 
-
+//-------------------------------------------
+/** MODULE: khi tạo 'module', các file trong js trở thành scope chỉ trong file đó.
+ * Dẫn đến: khi dùng DOM để tạo html, không thể dùng 'onclick',
+ *          vì chúng không được gán cho window
+ * ==> Gán cho 'window' các hàm dùng DOM để tạo html.
+ */
+window.showProductDetails = showProductDetails;
+window.quayve = quayve;
+window.giohang = giohang;
+window.Dangky = Dangky;
+window.Dangnhap = Dangnhap;
+window.Dangxuat = Dangxuat;
+window.reloadPage = reloadPage;
+window.renderProducts = renderProducts;
+window.renderPagination = renderPagination;
+window.changePage = changePage;
+//-------------------------------------------
 
 
 
