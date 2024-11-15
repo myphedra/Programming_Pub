@@ -661,13 +661,13 @@ body {
 	}
 }
 @media only screen and (min-width: 601px) and (max-width: 900px) {
-	#sidebar {
-        width: 70px;
+    /* #nav #btnmenu{
+		display: block;
+	} */
+	#content {
+        width: calc(100% - 70px);
+        left: 70px;
     }
-	#content{
-		width: 100vw;
-		margin: 0;
-	}
     #container #leftsection{
 		width: 100%;
 		padding: 40px 20px 0px;
@@ -686,16 +686,13 @@ body {
 	}
 }
 @media only screen  and (min-width: 0px) and (max-width: 600px) {
-	#sidebar {
-        width: 70px;
-    }
-	#nav #btnmenu{
+	/* #nav #btnmenu{
 		display: block;
-	}
-	#content{
-		width: 100vw;
-		margin: 0;
-	}
+	} */
+	#content {
+        width: calc(100% - 70px);
+        left: 70px;
+    }
     #container #leftsection{
 		width: 100%;
 		padding: 10px 0px;
