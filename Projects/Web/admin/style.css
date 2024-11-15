@@ -341,7 +341,7 @@ body {
 
 #container #leftsection {
     width: 70%;
-    padding: 20px;
+    padding: 20px 20px 10px 20px;
 }
 
 #container #leftsection #product-list {
@@ -644,7 +644,7 @@ body {
 /* END CONTENT */
 
 /* Thêm transition cho các phần tử cần thay đổi kích thước */
-@media only screen and (min-width: 901px)and (max-width: 1360px) {
+@media only screen and (min-width: 901px) and (max-width: 1060px) {
     #container #leftsection{
 		width: 100%;
 	}
@@ -661,13 +661,10 @@ body {
 	}
 }
 @media only screen and (min-width: 601px) and (max-width: 900px) {
-	#leftmenu{
-		display: none;
-	}
-	#nav #btnmenu{
-		display: block;
-	}
-	#maincontent{
+	#sidebar {
+        width: 70px;
+    }
+	#content{
 		width: 100vw;
 		margin: 0;
 	}
@@ -686,5 +683,37 @@ body {
 	#container #rightsection .subsection{
 		width: 100%;
 		padding: 10px;
+	}
+}
+@media only screen  and (min-width: 0px) and (max-width: 600px) {
+	#sidebar {
+        width: 70px;
+    }
+	#nav #btnmenu{
+		display: block;
+	}
+	#content{
+		width: 100vw;
+		margin: 0;
+	}
+    #container #leftsection{
+		width: 100%;
+		padding: 10px 0px;
+	}
+	#container #leftsection #product-list{
+		padding: 0px;
+		box-shadow: none;
+	}
+	#container #rightsection{
+		width: 100%;
+		flex-wrap: wrap;
+		padding: 10px 0px;
+	}
+	#container #rightsection .subsection{
+		width: 100%;
+		padding: 10px;
+		border: 2px solid var(--blue);
+        background-color: var(--grey);
+		box-shadow: none;
 	}
 }
