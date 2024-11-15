@@ -1,20 +1,19 @@
+// VÒNG LẶP VÔ TẬN SHOW BANNER
 var slideIndex = 0;
 showSlides();
 function showSlides() 
 {
     var i;
     var slides = document.getElementsByClassName("slideShow");
-    //var dots = document.getElementsByClassName("dot");
+
     for (i = 0; i < slides.length; i++) {
        slides[i].style.display = "none";  
     }
     slideIndex++;
     if (slideIndex > slides.length) {slideIndex = 1}    
-    /*for (i = 0; i < dots.length; i++) {
-        dots[i].className = dots[i].className.replace(" active", "");
-    }*/
+
     slides[slideIndex-1].style.display = "flex";  
-    //dots[slideIndex-1].className += " active";
+
     setTimeout(showSlides, 8000);
 }
 
@@ -25,24 +24,27 @@ range = document.querySelector(".slider .progress");
 
 let priceGap = 1000;
 
+//Chuyển đổi 12345= 12.345
 function formatNumber(num) {
     return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
+//Chuyển đổi 12.345 = 12345
 function unformatNumber(str) {
     return parseInt(str.replace(/\./g, ""));
 }
 
-// Function to synchronize and format price inputs with range inputs
+//Cập nhật trên ô giá 12345 thành 12.345
 function updatePriceInput(inputElement, value) {
     inputElement.value = formatNumber(value);
 }
 
-// Function to synchronize and format range inputs with price inputs
+//Cập nhật vị trí của thanh trượt
 function updateRangeInput(rangeElement, value) {
     rangeElement.value = value;
 }
 
+//Cập nhật chỉ số vào ô nhập, rồi tự động trượt thanh kéo
 priceInput.forEach(input => {
     input.addEventListener("input", e => {
         let minPrice = unformatNumber(priceInput[0].value),
@@ -68,7 +70,7 @@ priceInput.forEach(input => {
     });
 });
 
-// Adjust range input to also format the price inputs when sliding
+//Trượt thanh kéo, rồi cập nhật ô nhập
 rangeInput.forEach(input => {
     input.addEventListener("input", e => {
         let minVal = parseInt(rangeInput[0].value),
@@ -362,6 +364,7 @@ function formatPrice(price) {
     }).format(price);
 }
 
+//TRỘN MẢNG
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
